@@ -1,0 +1,85 @@
+=== Distribución del Dataset (Discretizado/Etiquetado) ===
+Total registros: 79728
+
+--- Distribución de: gender ---
+        Count  Percentage
+gender                   
+Female  46642   58.501405
+Male    33086   41.498595
+
+--- Distribución de: age ---
+                      Count  Percentage
+age                                    
+jovenes [21-60]       44062   55.265402
+adulto_mayor [60+]    19952   25.025085
+adolescentes [11-20]   7965    9.990217
+niños [0-10]           7749    9.719296
+
+--- Distribución de: location ---
+             Count  Percentage
+location                      
+South        25182   31.584889
+West         18229   22.863988
+Midwest      18037   22.623169
+Northeast    14143   17.739063
+Territories   4137    5.188892
+
+--- Distribución de: hypertension ---
+              Count  Percentage
+hypertension                   
+0             73806   92.572246
+1              5922    7.427754
+
+--- Distribución de: heart_disease ---
+               Count  Percentage
+heart_disease                   
+0              76578   96.049067
+1               3150    3.950933
+
+--- Distribución de: smoking_history ---
+                 Count  Percentage
+smoking_history                   
+No Info          28655   35.940949
+never            27863   34.947572
+current           7442    9.334236
+former            7429    9.317931
+not current       5131    6.435631
+ever              3208    4.023681
+
+--- Distribución de: bmi ---
+                       Count  Percentage
+bmi                                     
+sobrepeso [25-30]      36430   45.692856
+obesidad [30+]         18738   23.502408
+peso_normal [18.5-25]  17784   22.305840
+bajo_peso [<18.5]       6776    8.498896
+
+--- Distribución de: hbA1c_level ---
+                  Count  Percentage
+hbA1c_level                        
+limite [5.7-6.5]  32876   41.235200
+normal [<5.7]     30215   37.897602
+sobre [6.5+]      16637   20.867198
+
+--- Distribución de: blood_glucose_level ---
+                     Count  Percentage
+blood_glucose_level                   
+normal [80-160]      64949   81.463225
+critico [200+]        8645   10.843117
+elevado [160-200]     6134    7.693658
+
+--- Distribución de: diabetes ---
+          Count  Percentage
+diabetes                   
+0         73001   91.562563
+1          6727    8.437437
+
+--- Distribución de: race ---
+                  Count  Percentage
+race                               
+African American  16066   20.151013
+Caucasian         16011   20.082029
+Hispanic          15920   19.967891
+Other             15892   19.932771
+Asian             15839   19.866295
+

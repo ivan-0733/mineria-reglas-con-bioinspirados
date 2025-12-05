@@ -1,0 +1,77 @@
+{
+  "experiment": {
+    "name": "MOEAD_ARM_Diabetes_Scenario_1",
+    "description": "Optimización de reglas de asociación usando MOEA/D. Escenario 1.",
+    "random_seed": 42,
+    "output_root": "results"
+  },
+  "use_sampling": false,
+  "algorithm": {
+    "generations": 300,
+    "population_size": 100,
+    "logging_interval": 50,
+    "termination": {
+      "enabled": true,
+      "ftol": 0.0001,
+      "period": 30
+    },
+    "initialization": {
+      "max_attempts": 5000
+    },
+    "decomposition": {
+      "method": "tchebycheff",
+      "params": {}
+    },
+    "neighborhood": {
+      "size": 30,
+      "replacement_size": 30,
+      "selection_probability": 0.9
+    },
+    "operators": {
+      "crossover": {
+        "probability": {
+          "initial": 0.6,
+          "min": 0.4,
+          "max": 0.8
+        }
+      },
+      "mutation": {
+        "method": "mixed",
+        "active_ops": ["extension", "contraction", "replacement"],
+        "probability": {
+          "initial": 0.5,
+          "min": 0.3,
+          "max": 0.7
+        },
+        "repair_attempts": 5,
+        "duplicate_attempts": 5
+      }
+    }
+  },
+  "objectives": {
+    "selected": [
+      "support",
+      "confidence",
+      "lift"
+    ]
+  },
+  "constraints": {
+    "rule_validity": {
+      "min_antecedent_items": 1,
+      "min_consequent_items": 1,
+      "max_antecedent_items": 4,
+      "max_consequent_items": 2
+    },
+    "metric_thresholds": {
+      "support": { "min": 0.001, "max": 1.0 },
+      "confidence": { "min": 0.01, "max": 1.0 },
+      "lift": { "min": 0.01, "max": 100.0 }
+    },
+    "exclusions": {
+      "fixed_consequents": ["gender"],
+      "forbidden_pairs": [
+        ["age:niños [0-10]", "bmi:bajo_peso [<18.5]"]
+      ]
+    }
+  }
+}

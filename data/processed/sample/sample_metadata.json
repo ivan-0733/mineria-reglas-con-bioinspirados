@@ -1,0 +1,312 @@
+{
+  "dataset_name": "diabetes",
+  "variables": {
+    "age": {
+      "type": "ordinal",
+      "cardinality": 4,
+      "labels": [
+        "niños [0-10]",
+        "adolescentes [11-20]",
+        "jovenes [21-60]",
+        "adulto_mayor [60+]"
+      ],
+      "transformation": {
+        "source_type": "continuous",
+        "method": "binning",
+        "bins": [
+          0,
+          10,
+          20,
+          60
+        ],
+        "right": false
+      },
+      "encoding": {
+        "niños [0-10]": 0,
+        "adolescentes [11-20]": 1,
+        "jovenes [21-60]": 2,
+        "adulto_mayor [60+]": 3
+      }
+    },
+    "bmi": {
+      "type": "ordinal",
+      "cardinality": 4,
+      "labels": [
+        "bajo_peso [<18.5]",
+        "peso_normal [18.5-25]",
+        "sobrepeso [25-30]",
+        "obesidad [30+]"
+      ],
+      "transformation": {
+        "source_type": "continuous",
+        "method": "binning",
+        "bins": [
+          0,
+          18.5,
+          25,
+          30
+        ],
+        "right": false
+      },
+      "encoding": {
+        "bajo_peso [<18.5]": 0,
+        "peso_normal [18.5-25]": 1,
+        "sobrepeso [25-30]": 2,
+        "obesidad [30+]": 3
+      }
+    },
+    "hbA1c_level": {
+      "type": "ordinal",
+      "cardinality": 3,
+      "labels": [
+        "normal [<5.7]",
+        "limite [5.7-6.5]",
+        "sobre [6.5+]"
+      ],
+      "transformation": {
+        "source_type": "continuous",
+        "method": "binning",
+        "bins": [
+          0,
+          5.7,
+          6.5
+        ],
+        "right": false
+      },
+      "encoding": {
+        "normal [<5.7]": 0,
+        "limite [5.7-6.5]": 1,
+        "sobre [6.5+]": 2
+      }
+    },
+    "blood_glucose_level": {
+      "type": "ordinal",
+      "cardinality": 4,
+      "labels": [
+        "hipoglucemia [<80]",
+        "normal [80-160]",
+        "elevado [160-200]",
+        "critico [200+]"
+      ],
+      "transformation": {
+        "source_type": "continuous",
+        "method": "binning",
+        "bins": [
+          0,
+          80,
+          160,
+          200
+        ],
+        "right": false
+      },
+      "encoding": {
+        "hipoglucemia [<80]": 0,
+        "normal [80-160]": 1,
+        "elevado [160-200]": 2,
+        "critico [200+]": 3
+      }
+    },
+    "race": {
+      "transformation": {
+        "source_type": "one_hot",
+        "columns": [
+          "race:AfricanAmerican",
+          "race:Asian",
+          "race:Caucasian",
+          "race:Hispanic",
+          "race:Other"
+        ]
+      },
+      "type": "nominal",
+      "cardinality": 5,
+      "encoding": {
+        "Hispanic": 0,
+        "Asian": 1,
+        "Caucasian": 2,
+        "African American": 3,
+        "Other": 4
+      },
+      "labels": [
+        "Hispanic",
+        "Asian",
+        "Caucasian",
+        "African American",
+        "Other"
+      ]
+    },
+    "location": {
+      "transformation": {
+        "source_type": "nominal",
+        "method": "hierarchical_grouping",
+        "original_cardinality": 55,
+        "strategy": "us_census_regions",
+        "groups": {
+          "Northeast": [
+            "Connecticut",
+            "Maine",
+            "Massachusetts",
+            "New Hampshire",
+            "Rhode Island",
+            "Vermont",
+            "New Jersey",
+            "New York",
+            "Pennsylvania"
+          ],
+          "Midwest": [
+            "Illinois",
+            "Indiana",
+            "Michigan",
+            "Ohio",
+            "Wisconsin",
+            "Iowa",
+            "Kansas",
+            "Minnesota",
+            "Missouri",
+            "Nebraska",
+            "North Dakota",
+            "South Dakota"
+          ],
+          "South": [
+            "Delaware",
+            "Florida",
+            "Georgia",
+            "Maryland",
+            "North Carolina",
+            "South Carolina",
+            "Virginia",
+            "District of Columbia",
+            "West Virginia",
+            "Alabama",
+            "Kentucky",
+            "Mississippi",
+            "Tennessee",
+            "Arkansas",
+            "Louisiana",
+            "Oklahoma",
+            "Texas"
+          ],
+          "West": [
+            "Arizona",
+            "Colorado",
+            "Idaho",
+            "Montana",
+            "Nevada",
+            "New Mexico",
+            "Utah",
+            "Wyoming",
+            "Alaska",
+            "California",
+            "Hawaii",
+            "Oregon",
+            "Washington"
+          ],
+          "Territories": [
+            "Puerto Rico",
+            "Guam",
+            "Virgin Islands",
+            "United States"
+          ]
+        }
+      },
+      "type": "nominal",
+      "cardinality": 5,
+      "encoding": {
+        "Midwest": 0,
+        "Northeast": 1,
+        "South": 2,
+        "Territories": 3,
+        "West": 4
+      },
+      "labels": [
+        "Midwest",
+        "Northeast",
+        "South",
+        "Territories",
+        "West"
+      ]
+    },
+    "gender": {
+      "type": "nominal",
+      "cardinality": 2,
+      "encoding": {
+        "Male": 0,
+        "Female": 1
+      },
+      "labels": [
+        "Male",
+        "Female"
+      ]
+    },
+    "smoking_history": {
+      "type": "ordinal",
+      "cardinality": 6,
+      "encoding": {
+        "never": 0,
+        "former": 1,
+        "current": 2,
+        "ever": 3,
+        "not current": 4,
+        "No Info": 5
+      },
+      "labels": [
+        "never",
+        "former",
+        "current",
+        "ever",
+        "not current",
+        "No Info"
+      ]
+    },
+    "diabetes": {
+      "type": "nominal",
+      "cardinality": 2,
+      "encoding": {
+        "0": 0,
+        "1": 1
+      },
+      "role": "target",
+      "labels": [
+        "0",
+        "1"
+      ]
+    }
+  },
+  "feature_order": [
+    "age",
+    "gender",
+    "bmi",
+    "hbA1c_level",
+    "blood_glucose_level",
+    "smoking_history",
+    "race"
+  ],
+  "target_variable": "diabetes",
+  "preprocessing": {
+    "row_filters": [
+      {
+        "column": "year",
+        "value": 2019,
+        "operator": "=="
+      },
+      {
+        "column": "gender",
+        "value": "Other",
+        "operator": "!="
+      }
+    ],
+    "drop_columns": [
+      "year"
+    ]
+  },
+  "dataset_info": {
+    "original_size": 79728,
+    "sample_size": 5000,
+    "sampling_method": "stratified",
+    "stratification_vars": [
+      "diabetes",
+      "age",
+      "location"
+    ],
+    "random_state": 42
+  }
+}

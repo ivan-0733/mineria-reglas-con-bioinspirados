@@ -1,0 +1,79 @@
+{
+  "experiment": {
+    "name": "MOEAD_ARM_Diabetes_Scenario_2",
+    "description": "Optimización de reglas de asociación usando MOEA/D. Escenario 2: Maximizar Jaccard, Coseno, Phi, Kappa",
+    "random_seed": 3,
+    "output_root": "results"
+  },
+  "use_sampling": false,
+  "algorithm": {
+    "generations": 300,
+    "population_size": 100,
+    "logging_interval": 50,
+    "termination": {
+      "enabled": true,
+      "ftol": 0.0001,
+      "period": 30
+    },
+    "initialization": {
+      "max_attempts": 5000
+    },
+    "decomposition": {
+      "method": "tchebycheff",
+      "params": {}
+    },
+    "neighborhood": {
+      "size": 30,
+      "replacement_size": 30,
+      "selection_probability": 0.9
+    },
+    "operators": {
+      "crossover": {
+        "probability": {
+          "initial": 0.7,
+          "min": 0.5,
+          "max": 0.8
+        }
+      },
+      "mutation": {
+        "method": "mixed",
+        "active_ops": ["extension", "contraction", "replacement"],
+        "probability": {
+          "initial": 0.4,
+          "min": 0.3,
+          "max": 0.6
+        },
+        "repair_attempts": 5,
+        "duplicate_attempts": 5
+      }
+    }
+  },
+  "objectives": {
+    "selected": [
+      "jaccard",
+      "cosine",
+      "phi",
+      "kappa"
+    ]
+  },
+  "constraints": {
+    "rule_validity": {
+      "min_antecedent_items": 1,
+      "min_consequent_items": 1,
+      "max_antecedent_items": 4,
+      "max_consequent_items": 2
+    },
+    "metric_thresholds": {
+      "jaccard": { "min": 0.0, "max": 1.0 },
+      "cosine": { "min": 0.0, "max": 1.0 },
+      "phi": { "min": -1.0, "max": 1.0 },
+      "kappa": { "min": -1.0, "max": 1.0 }
+    },
+    "exclusions": {
+      "fixed_consequents": ["race", "gender", "age"],
+      "forbidden_pairs": [
+        ["age:niños [0-10]", "bmi:bajo_peso [<18.5]"]
+      ]
+    }
+  }
+}

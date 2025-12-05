@@ -1,0 +1,12 @@
+{
+  "dataset": {
+    "name": "diabetes_dataset",
+    "raw_path": "data/raw/diabetes_dataset/diabetes_dataset.csv",
+    "processed_path": "data/processed/diabetes_dataset/diabetes_dataset_processed.csv",
+    "metadata_path": "data/processed/diabetes_dataset/metadata.json",
+    "supports_path": "data/processed/diabetes_dataset/supports.json",
+    "sampling_path": "data/processed/sample/diabetes_sample_5k.csv",
+    "sample_metadata_path": "data/processed/sample/sample_metadata.json",
+    "sample_supports_path": "data/processed/sample/sample_supports.json"
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "dataset_name": "diabetes",
+  "row_filters": [
+    {
+      "column": "year",
+      "value": 2019,
+      "operator": "=="
+    },
+    {
+      "column": "gender",
+      "value": "Other",
+      "operator": "!="
+    }
+  ],
+  "drop_columns": ["year"],
+  "continuous_to_categorical": {
+    "age": {
+      "type": "ordinal",
+      "bins": [0, 10, 20, 60],
+      "labels": ["niños [0-10]", "adolescentes [11-20]", "jovenes [21-60]", "adulto_mayor [60+]"],
+      "right": false,
+      "cardinality": 4
+    },
+    "bmi": {
+      "type": "ordinal",
+      "bins": [0, 18.5, 25, 30],
+      "labels": ["bajo_peso [<18.5]", "peso_normal [18.5-25]", "sobrepeso [25-30]", "obesidad [30+]"],
+      "right": false,
+      "cardinality": 4
+    },
+    "hbA1c_level": {
+      "type": "ordinal",
+      "bins": [0, 5.7, 6.5],
+      "labels": ["normal [<5.7]", "limite [5.7-6.5]", "sobre [6.5+]"],
+      "right": false,
+      "cardinality": 3
+    },
+    "blood_glucose_level": {
+      "type": "ordinal",
+      "bins": [0, 80, 160, 200],
+      "labels": ["hipoglucemia [<80]", "normal [80-160]", "elevado [160-200]", "critico [200+]"],
+      "right": false,
+      "cardinality": 4
+    }
+  },
+  "one_hot_to_decode": {
+    "race": {
+      "columns": ["race:AfricanAmerican", "race:Asian", "race:Caucasian", "race:Hispanic", "race:Other"],
+      "mapping": {
+        "0": "African American",
+        "1": "Asian",
+        "2": "Caucasian",
+        "3": "Hispanic",
+        "4": "Other"
+      },
+      "cardinality": 5
+    }
+  },
+  "categorical_encoding": {
+    "gender": {
+      "type": "nominal",
+      "mapping": {
+        "Male": 0,
+        "Female": 1
+      },
+      "cardinality": 2
+    },
+    "smoking_history": {
+      "type": "ordinal",
+      "mapping": {
+        "never": 0,
+        "former": 1,
+        "current": 2,
+        "ever": 3,
+        "not current": 4,
+        "No Info": 5
+      },
+      "cardinality": 6
+    }
+  },
+  "target_variable": "diabetes",
+  "feature_order": ["age", "gender", "bmi", "hbA1c_level", "blood_glucose_level", "smoking_history", "race"],
+  "rediscretization":{
+    "location": {
+        "type": "nominal_hierarchical",
+        "original_cardinality": 55,
+        "grouping_strategy": "us_census_regions",
+        "mapping": {
+          "Northeast": [
+            "Connecticut", "Maine", "Massachusetts", "New Hampshire", 
+            "Rhode Island", "Vermont", "New Jersey", "New York", "Pennsylvania"
+          ],
+          "Midwest": [
+            "Illinois", "Indiana", "Michigan", "Ohio", "Wisconsin",
+            "Iowa", "Kansas", "Minnesota", "Missouri", "Nebraska",
+            "North Dakota", "South Dakota"
+          ],
+          "South": [
+            "Delaware", "Florida", "Georgia", "Maryland", "North Carolina",
+            "South Carolina", "Virginia", "District of Columbia", "West Virginia",
+            "Alabama", "Kentucky", "Mississippi", "Tennessee",
+            "Arkansas", "Louisiana", "Oklahoma", "Texas"
+          ],
+          "West": [
+            "Arizona", "Colorado", "Idaho", "Montana", "Nevada",
+            "New Mexico", "Utah", "Wyoming", "Alaska", "California",
+            "Hawaii", "Oregon", "Washington"
+          ],
+          "Territories": [
+            "Puerto Rico", "Guam", "Virgin Islands", "United States"
+          ]
+        },
+        "cardinality": 5
+      }
+  }
+}
